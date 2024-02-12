@@ -50,7 +50,7 @@ namespace DependencyInjection
             }
 
         }
-        
+        //This method is used to inject dependencies into a MonoBehaviour
         void RegisterProvider(IDependencyProvider provider)
         {
             var methods = provider.GetType().GetMethods(k_bindingFlags);
@@ -74,7 +74,7 @@ namespace DependencyInjection
                 }
             }
         }
-        
+        //This method is used to inject dependencies into a MonoBehaviour
         static MonoBehaviour[] FindMonoBehaviours()
         {
             return FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.InstanceID);
