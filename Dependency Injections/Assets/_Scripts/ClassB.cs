@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace DependencyInjection
@@ -12,6 +13,12 @@ namespace DependencyInjection
         {
             this.FactoryA = factoryA;
         }
-        
+
+        private void Start()
+        {
+            ServiceA.Initalize("ServiceA initialized from ClassB");
+            ServiceB.Initalize("ServiceB initialized from ClassB");
+            FactoryA.CreateServiceA().Initalize("FactoryA initialized from ClassB");
+        }
     }
 }
