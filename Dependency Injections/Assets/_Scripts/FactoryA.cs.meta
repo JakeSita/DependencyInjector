@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: f87a8ae906224e048a05ff2bb5993069
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _APrefab: {fileID: 5616228245031726103, guid: dc4bf50ffec344f9b8382b2c29e2182c, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

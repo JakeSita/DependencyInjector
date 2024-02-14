@@ -22,6 +22,7 @@ namespace DependencyInjection
     {
         
     }
+    
     [DefaultExecutionOrder(-10000)]
     //This class is used to inject dependencies into a MonoBehaviour
     public class Injector : Singleton<Injector>
@@ -48,13 +49,15 @@ namespace DependencyInjection
 
 
         }
-
+        //This method is used to inject dependencies into a MonoBehaviour
         void Inject(Object instance)
         {
+            //Get all fields and methods marked with the InjectAttribute
             var type = instance.GetType();
             var fields = type.GetFields(k_bindingFlags)
                 .Where(member => Attribute.IsDefined(member, typeof(InjectAttribute)));
             
+            //Inject the fields
             foreach(var injectableFields in fields)
             {
                 var fieldType = injectableFields.FieldType;
@@ -67,10 +70,11 @@ namespace DependencyInjection
                 Debug.Log($" Field injected {fieldType.Name} into {type.Name}");
                 
             }
-            
+            //Inject the methods
             var injectableMethods = type.GetMethods(k_bindingFlags)
                 .Where(member => Attribute.IsDefined(member, typeof(InjectAttribute)));
             
+            //Inject the methods
             foreach (var injectableMethod in injectableMethods)
             {
                 var parameters = injectableMethod.GetParameters()
@@ -89,6 +93,7 @@ namespace DependencyInjection
             }
         }
         
+        //resolves a dependency by type
         Object Resolve(Type type)
         {
             if (registry.TryGetValue(type, out var result))

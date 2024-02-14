@@ -1,11 +1,12 @@
 using UnityEngine;
+using System;
 
 namespace DependencyInjection
 {
     public interface IEnviromentSystem
     {
-        IEnviromentSystem ProvideEnviromentSystem();
         void Initialize();
+        String ProvideString();
     }
 
     public class EnviromentSystem : MonoBehaviour, IDependencyProvider, IEnviromentSystem
@@ -15,7 +16,10 @@ namespace DependencyInjection
         {
             return this;
         }
-
+        public String ProvideString()
+        {
+            return "Hello World";
+        }
         public void Initialize()
         {
             Debug.Log("Enviroment System Initialized");

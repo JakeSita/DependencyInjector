@@ -4,6 +4,8 @@ namespace DependencyInjection
 {
     public class Provider : MonoBehaviour, IDependencyProvider
     {
+        [SerializeField] private GameObject ProductAPrefab;
+        
         [Provide]
         public ServiceA ProvideServiceA()
         {
@@ -18,11 +20,6 @@ namespace DependencyInjection
             var serviceB = new ServiceB();
             serviceB.Initalize("From Provider");
             return serviceB;
-        }
-        [Provide]
-        public FactoryA ProvideFactoryA()
-        {
-            return new FactoryA();
         }
     }
 
@@ -41,19 +38,6 @@ namespace DependencyInjection
         public void Initalize(string message = null)
         {
             Debug.Log($"ServiceB Initialized({message}");
-        }
-    }
-    
-    public class FactoryA
-    {
-        private ServiceA _cacheServiceA;
-        public ServiceA CreateServiceA()
-        {
-            if (_cacheServiceA == null)
-            {
-                _cacheServiceA = new ServiceA();
-            }
-            return _cacheServiceA;
         }
     }
 }
