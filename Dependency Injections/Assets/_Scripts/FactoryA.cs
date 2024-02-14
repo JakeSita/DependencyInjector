@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DependencyInjection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -19,14 +20,21 @@ namespace factory
     }
 
 
-    public class FactoryA: Factory
+    public class FactoryA: Factory,IDependencyProvider
     {
-       [SerializeField] ProductA _APrefab;
-        
+        [SerializeField] private ProductA aPrefab; 
+        public ProductA APrefab { get => aPrefab; set => aPrefab = value; }
+
+       [Provide]
+       public FactoryA ProvideFactoryA()
+       {
+           return this;
+       }
+       
         public override IFactory GetProduct(Vector2 position = default)
 
         {
-            var gameobject = Instantiate(_APrefab, position, Quaternion.identity);
+            var gameobject = Instantiate(aPrefab, position, Quaternion.identity);
             ProductA newProduct = gameobject.GetComponent<ProductA>();
             newProduct.Initalize();
             return newProduct;

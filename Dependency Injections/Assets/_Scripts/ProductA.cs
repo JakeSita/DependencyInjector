@@ -1,4 +1,5 @@
 using System;
+using DependencyInjection;
 using UnityEngine;
 
 namespace factory
@@ -11,13 +12,13 @@ namespace factory
         public GameObject Prefab { get => _prefab; set => _prefab = value;}
         public String Name { get => productName; set => productName = value; }
         private SpriteRenderer SR;
-        public static int Instance = 0;
+        public static int InstanceNum = 0;
         
         
         public void Initalize()
         {
-            Instance++;
-            gameObject.name = $"{productName}{Instance}";
+            InstanceNum++;
+            gameObject.name = $"{productName}{InstanceNum}";
             SR = GetComponent<SpriteRenderer>();
             SR.color = Color.red;
             ProductFactoryManager.AddProduct(productName, this);
