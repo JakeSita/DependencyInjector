@@ -532,7 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f87a8ae906224e048a05ff2bb5993069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aPrefab: {fileID: 0}
+  aPrefab: {fileID: 5616228245031726103, guid: dc4bf50ffec344f9b8382b2c29e2182c, type: 3}
 --- !u!1 &1882860070
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f36e65b1614b848c124ec7d7184141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ProductAPrefab: {fileID: 8046967151436596905, guid: dc4bf50ffec344f9b8382b2c29e2182c, type: 3}
+  pos: {x: 2, y: 0}
 --- !u!4 &1882860072
 Transform:
   m_ObjectHideFlags: 0

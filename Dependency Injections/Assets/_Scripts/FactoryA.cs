@@ -22,7 +22,9 @@ namespace factory
 
     public class FactoryA: Factory,IDependencyProvider
     {
-        [SerializeField] private ProductA aPrefab; 
+        [SerializeField] private ProductA aPrefab;
+
+        
         public ProductA APrefab { get => aPrefab; set => aPrefab = value; }
 
        [Provide]
@@ -34,23 +36,24 @@ namespace factory
         public override IFactory GetProduct(Vector2 position = default)
 
         {
-            var gameobject = Instantiate(aPrefab, position, Quaternion.identity);
-            ProductA newProduct = gameobject.GetComponent<ProductA>();
-            newProduct.Initalize();
+            ProductA newProduct = new ProductA.ProductABuilder().SetName("ProductA").SetPrefab(APrefab.gameObject).SetPosition(position).Build(); 
+            ProductFactoryManager.AddProduct(newProduct.name, newProduct);
             return newProduct;
         }
+        
+        
         
     }
 
     public static class ProductFactoryManager
     {
-        public static Dictionary<String,ProductA> ProductDic = new Dictionary<String,ProductA>();
-        public static void AddProduct(String name, ProductA product)
+        public static Dictionary<String,IFactory> ProductDic = new Dictionary<String,IFactory>();
+        public static void AddProduct(String name, IFactory product)
         {
             ProductDic.Add(name, product);
         }
         
-        public static ProductA GetProduct(String name)
+        public static IFactory GetProduct(String name)
         {
             return ProductDic[name];
         }

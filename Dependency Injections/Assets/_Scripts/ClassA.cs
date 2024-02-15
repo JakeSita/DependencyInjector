@@ -1,13 +1,15 @@
 using UnityEngine;
 using factory;
+using Unity.VisualScripting;
 
 namespace DependencyInjection
 {
     public class ClassA : MonoBehaviour
     {
-        [SerializeField] private GameObject ProductAPrefab;
         ServiceA ServiceA;
         FactoryA factoryA;
+        
+        [SerializeField] private Vector2 pos;
         [Inject]
         public void InjectServiceA(ServiceA serviceA)
         {
@@ -24,8 +26,15 @@ namespace DependencyInjection
         private void Start()
         {
             ServiceA.Initalize("ServiceA initialized from ClassA");
-            factoryA.APrefab = ProductAPrefab.GetComponent<ProductA>();
-            factoryA.GetProduct();
+        }
+        
+        //on right click call factoryA.get product at a mouse position
+        void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                factoryA.GetProduct(pos);
+            }
         }
         
         

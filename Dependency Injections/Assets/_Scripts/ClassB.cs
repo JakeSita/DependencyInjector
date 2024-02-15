@@ -14,6 +14,7 @@ namespace DependencyInjection
         {
             ServiceA.Initalize("ServiceA initialized from ClassB");
             ServiceB.Initalize("ServiceB initialized from ClassB");
+            winter.Initialize();
         }
     }
 }
