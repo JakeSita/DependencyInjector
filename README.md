@@ -7,4 +7,4 @@
   <li>Lastly inject Objects into test cases or other dependencies with the [Inject] attribute</li>
 </ol>
 <br>
-<p>his code was greatly inspired by GitAmend Dependency Injector Repo</p>
+<p>This code was greatly inspired by GitAmend Dependency Injector Repo</p>
